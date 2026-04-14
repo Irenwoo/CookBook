@@ -1,0 +1,15 @@
+C:\Users\User\OneDrive\Документы\Учёба\2 курс\2 семестр\CookBook.Domain\bin\Debug\net9.0\CookBook.Domain.deps.json
+C:\Users\User\OneDrive\Документы\Учёба\2 курс\2 семестр\CookBook.Domain\bin\Debug\net9.0\CookBook.Domain.dll
+C:\Users\User\OneDrive\Документы\Учёба\2 курс\2 семестр\CookBook.Domain\bin\Debug\net9.0\CookBook.Domain.pdb
+C:\Users\User\OneDrive\Документы\Учёба\2 курс\2 семестр\CookBook.Domain\bin\Debug\net9.0\CookBook.ValueObjects.dll
+C:\Users\User\OneDrive\Документы\Учёба\2 курс\2 семестр\CookBook.Domain\bin\Debug\net9.0\CookBook.ValueObjects.pdb
+C:\Users\User\OneDrive\Документы\Учёба\2 курс\2 семестр\CookBook.Domain\obj\Debug\net9.0\CookBook.Domain.csproj.AssemblyReference.cache
+C:\Users\User\OneDrive\Документы\Учёба\2 курс\2 семестр\CookBook.Domain\obj\Debug\net9.0\CookBook.Domain.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\User\OneDrive\Документы\Учёба\2 курс\2 семестр\CookBook.Domain\obj\Debug\net9.0\CookBook.Domain.AssemblyInfoInputs.cache
+C:\Users\User\OneDrive\Документы\Учёба\2 курс\2 семестр\CookBook.Domain\obj\Debug\net9.0\CookBook.Domain.AssemblyInfo.cs
+C:\Users\User\OneDrive\Документы\Учёба\2 курс\2 семестр\CookBook.Domain\obj\Debug\net9.0\CookBook.Domain.csproj.CoreCompileInputs.cache
+C:\Users\User\OneDrive\Документы\Учёба\2 курс\2 семестр\CookBook.Domain\obj\Debug\net9.0\CookBook.218D3565.Up2Date
+C:\Users\User\OneDrive\Документы\Учёба\2 курс\2 семестр\CookBook.Domain\obj\Debug\net9.0\CookBook.Domain.dll
+C:\Users\User\OneDrive\Документы\Учёба\2 курс\2 семестр\CookBook.Domain\obj\Debug\net9.0\refint\CookBook.Domain.dll
+C:\Users\User\OneDrive\Документы\Учёба\2 курс\2 семестр\CookBook.Domain\obj\Debug\net9.0\CookBook.Domain.pdb
+C:\Users\User\OneDrive\Документы\Учёба\2 курс\2 семестр\CookBook.Domain\obj\Debug\net9.0\ref\CookBook.Domain.dll

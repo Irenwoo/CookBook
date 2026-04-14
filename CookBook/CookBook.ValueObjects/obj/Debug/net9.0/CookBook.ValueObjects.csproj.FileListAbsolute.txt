@@ -1,0 +1,11 @@
+C:\Users\User\OneDrive\Документы\Учёба\2 курс\2 семестр\CookBook.ValueObjects\bin\Debug\net9.0\CookBook.ValueObjects.deps.json
+C:\Users\User\OneDrive\Документы\Учёба\2 курс\2 семестр\CookBook.ValueObjects\bin\Debug\net9.0\CookBook.ValueObjects.dll
+C:\Users\User\OneDrive\Документы\Учёба\2 курс\2 семестр\CookBook.ValueObjects\bin\Debug\net9.0\CookBook.ValueObjects.pdb
+C:\Users\User\OneDrive\Документы\Учёба\2 курс\2 семестр\CookBook.ValueObjects\obj\Debug\net9.0\CookBook.ValueObjects.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\User\OneDrive\Документы\Учёба\2 курс\2 семестр\CookBook.ValueObjects\obj\Debug\net9.0\CookBook.ValueObjects.AssemblyInfoInputs.cache
+C:\Users\User\OneDrive\Документы\Учёба\2 курс\2 семестр\CookBook.ValueObjects\obj\Debug\net9.0\CookBook.ValueObjects.AssemblyInfo.cs
+C:\Users\User\OneDrive\Документы\Учёба\2 курс\2 семестр\CookBook.ValueObjects\obj\Debug\net9.0\CookBook.ValueObjects.csproj.CoreCompileInputs.cache
+C:\Users\User\OneDrive\Документы\Учёба\2 курс\2 семестр\CookBook.ValueObjects\obj\Debug\net9.0\CookBook.ValueObjects.dll
+C:\Users\User\OneDrive\Документы\Учёба\2 курс\2 семестр\CookBook.ValueObjects\obj\Debug\net9.0\refint\CookBook.ValueObjects.dll
+C:\Users\User\OneDrive\Документы\Учёба\2 курс\2 семестр\CookBook.ValueObjects\obj\Debug\net9.0\CookBook.ValueObjects.pdb
+C:\Users\User\OneDrive\Документы\Учёба\2 курс\2 семестр\CookBook.ValueObjects\obj\Debug\net9.0\ref\CookBook.ValueObjects.dll
