@@ -1,0 +1,11 @@
+﻿using System;
+
+namespace CookBook.Domain.Exceptions
+{
+    public abstract class DomainException : Exception
+    {
+        protected DomainException(string message) : base(message)
+        {
+        }
+    }
+}
