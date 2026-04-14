@@ -1,0 +1,17 @@
+C:\Users\User\OneDrive\Документы\Учёба\2 курс\2 семестр\Domain.Repositories.Abstractions\obj\Debug\net9.0\Domain.Repositories.Abstractions.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\User\OneDrive\Документы\Учёба\2 курс\2 семестр\Domain.Repositories.Abstractions\obj\Debug\net9.0\Domain.Repositories.Abstractions.AssemblyInfoInputs.cache
+C:\Users\User\OneDrive\Документы\Учёба\2 курс\2 семестр\Domain.Repositories.Abstractions\obj\Debug\net9.0\Domain.Repositories.Abstractions.AssemblyInfo.cs
+C:\Users\User\OneDrive\Документы\Учёба\2 курс\2 семестр\Domain.Repositories.Abstractions\obj\Debug\net9.0\Domain.Repositories.Abstractions.csproj.CoreCompileInputs.cache
+C:\Users\User\OneDrive\Документы\Учёба\2 курс\2 семестр\Domain.Repositories.Abstractions\bin\Debug\net9.0\Domain.Repositories.Abstractions.deps.json
+C:\Users\User\OneDrive\Документы\Учёба\2 курс\2 семестр\Domain.Repositories.Abstractions\bin\Debug\net9.0\Domain.Repositories.Abstractions.dll
+C:\Users\User\OneDrive\Документы\Учёба\2 курс\2 семестр\Domain.Repositories.Abstractions\bin\Debug\net9.0\Domain.Repositories.Abstractions.pdb
+C:\Users\User\OneDrive\Документы\Учёба\2 курс\2 семестр\Domain.Repositories.Abstractions\bin\Debug\net9.0\CookBook.Domain.dll
+C:\Users\User\OneDrive\Документы\Учёба\2 курс\2 семестр\Domain.Repositories.Abstractions\bin\Debug\net9.0\CookBook.ValueObjects.dll
+C:\Users\User\OneDrive\Документы\Учёба\2 курс\2 семестр\Domain.Repositories.Abstractions\bin\Debug\net9.0\CookBook.Domain.pdb
+C:\Users\User\OneDrive\Документы\Учёба\2 курс\2 семестр\Domain.Repositories.Abstractions\bin\Debug\net9.0\CookBook.ValueObjects.pdb
+C:\Users\User\OneDrive\Документы\Учёба\2 курс\2 семестр\Domain.Repositories.Abstractions\obj\Debug\net9.0\Domain.Repositories.Abstractions.csproj.AssemblyReference.cache
+C:\Users\User\OneDrive\Документы\Учёба\2 курс\2 семестр\Domain.Repositories.Abstractions\obj\Debug\net9.0\Domain.R.234D6AFC.Up2Date
+C:\Users\User\OneDrive\Документы\Учёба\2 курс\2 семестр\Domain.Repositories.Abstractions\obj\Debug\net9.0\Domain.Repositories.Abstractions.dll
+C:\Users\User\OneDrive\Документы\Учёба\2 курс\2 семестр\Domain.Repositories.Abstractions\obj\Debug\net9.0\refint\Domain.Repositories.Abstractions.dll
+C:\Users\User\OneDrive\Документы\Учёба\2 курс\2 семестр\Domain.Repositories.Abstractions\obj\Debug\net9.0\Domain.Repositories.Abstractions.pdb
+C:\Users\User\OneDrive\Документы\Учёба\2 курс\2 семестр\Domain.Repositories.Abstractions\obj\Debug\net9.0\ref\Domain.Repositories.Abstractions.dll
