@@ -1,4 +1,4 @@
-using CookBook.Domain.Base;
+п»їusing CookBook.Domain.Base;
 
 namespace CookBook.Domain.Entities;
 
@@ -22,10 +22,10 @@ public class Chef : BaseEntity
     public static Chef Create(string username)
     {
         if (string.IsNullOrWhiteSpace(username))
-            throw new ArgumentException("Имя пользователя не может быть пустым.", nameof(username));
+            throw new ArgumentException("РРјСЏ РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ РЅРµ РјРѕР¶РµС‚ Р±С‹С‚СЊ РїСѓСЃС‚С‹Рј.", nameof(username));
 
         if (username.Length > 50)
-            throw new ArgumentException("Длина имени пользователя не должна превышать 50 символов.", nameof(username));
+            throw new ArgumentException("Р”Р»РёРЅР° РёРјРµРЅРё РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ РЅРµ РґРѕР»Р¶РЅР° РїСЂРµРІС‹С€Р°С‚СЊ 50 СЃРёРјРІРѕР»РѕРІ.", nameof(username));
 
         return new Chef(Guid.NewGuid(), Guid.NewGuid(), username, DateTime.UtcNow);
     }
@@ -36,10 +36,10 @@ public class Chef : BaseEntity
     public void UpdateUsername(string username)
     {
         if (string.IsNullOrWhiteSpace(username))
-            throw new ArgumentException("Имя пользователя не может быть пустым.", nameof(username));
+            throw new ArgumentException("РРјСЏ РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ РЅРµ РјРѕР¶РµС‚ Р±С‹С‚СЊ РїСѓСЃС‚С‹Рј.", nameof(username));
 
         if (username.Length > 50)
-            throw new ArgumentException("Длина имени пользователя не должна превышать 50 символов.", nameof(username));
+            throw new ArgumentException("Р”Р»РёРЅР° РёРјРµРЅРё РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ РЅРµ РґРѕР»Р¶РЅР° РїСЂРµРІС‹С€Р°С‚СЊ 50 СЃРёРјРІРѕР»РѕРІ.", nameof(username));
 
         Username = username;
     }

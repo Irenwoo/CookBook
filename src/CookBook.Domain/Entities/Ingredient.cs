@@ -1,4 +1,4 @@
-using CookBook.Domain.Base;
+п»їusing CookBook.Domain.Base;
 
 namespace CookBook.Domain.Entities;
 
@@ -25,19 +25,19 @@ public class Ingredient : BaseEntity
     public static Ingredient Create(Guid recipeId, string name, decimal? quantity = null, string? unit = null)
     {
         if (recipeId == Guid.Empty)
-            throw new ArgumentException("Идентификатор рецепта не может быть пустым.", nameof(recipeId));
+            throw new ArgumentException("РРґРµРЅС‚РёС„РёРєР°С‚РѕСЂ СЂРµС†РµРїС‚Р° РЅРµ РјРѕР¶РµС‚ Р±С‹С‚СЊ РїСѓСЃС‚С‹Рј.", nameof(recipeId));
 
         if (string.IsNullOrWhiteSpace(name))
-            throw new ArgumentException("Имя не может быть пустым.", nameof(name));
+            throw new ArgumentException("РРјСЏ РЅРµ РјРѕР¶РµС‚ Р±С‹С‚СЊ РїСѓСЃС‚С‹Рј.", nameof(name));
 
         if (name.Length > 100)
-            throw new ArgumentException("Длина имени не должна превышать 100 символов.", nameof(name));
+            throw new ArgumentException("Р”Р»РёРЅР° РёРјРµРЅРё РЅРµ РґРѕР»Р¶РЅР° РїСЂРµРІС‹С€Р°С‚СЊ 100 СЃРёРјРІРѕР»РѕРІ.", nameof(name));
 
         if (quantity.HasValue && quantity.Value < 0)
-            throw new ArgumentException("Количество не может быть отрицательным.", nameof(quantity));
+            throw new ArgumentException("РљРѕР»РёС‡РµСЃС‚РІРѕ РЅРµ РјРѕР¶РµС‚ Р±С‹С‚СЊ РѕС‚СЂРёС†Р°С‚РµР»СЊРЅС‹Рј.", nameof(quantity));
 
         if (unit != null && unit.Length > 20)
-            throw new ArgumentException("Объем текста не должен превышать 20 символов.", nameof(unit));
+            throw new ArgumentException("РћР±СЉРµРј С‚РµРєСЃС‚Р° РЅРµ РґРѕР»Р¶РµРЅ РїСЂРµРІС‹С€Р°С‚СЊ 20 СЃРёРјРІРѕР»РѕРІ.", nameof(unit));
 
         return new Ingredient(Guid.NewGuid(), Guid.NewGuid(), recipeId, name, quantity, unit);
     }
@@ -48,7 +48,7 @@ public class Ingredient : BaseEntity
     public void Update(string name, decimal? quantity = null, string? unit = null)
     {
         if (string.IsNullOrWhiteSpace(name))
-            throw new ArgumentException("Имя не может быть пустым.", nameof(name));
+            throw new ArgumentException("РРјСЏ РЅРµ РјРѕР¶РµС‚ Р±С‹С‚СЊ РїСѓСЃС‚С‹Рј.", nameof(name));
 
         Name = name;
         Quantity = quantity;

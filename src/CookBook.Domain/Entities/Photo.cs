@@ -1,4 +1,4 @@
-using CookBook.Domain.Base;
+п»їusing CookBook.Domain.Base;
 
 namespace CookBook.Domain.Entities;
 
@@ -23,13 +23,13 @@ public class Photo : BaseEntity
     public static Photo Create(Guid recipeId, string url, bool isMain = false)
     {
         if (recipeId == Guid.Empty)
-            throw new ArgumentException("Идентификатор рецепта не может быть пустым.", nameof(recipeId));
+            throw new ArgumentException("РРґРµРЅС‚РёС„РёРєР°С‚РѕСЂ СЂРµС†РµРїС‚Р° РЅРµ РјРѕР¶РµС‚ Р±С‹С‚СЊ РїСѓСЃС‚С‹Рј.", nameof(recipeId));
 
         if (string.IsNullOrWhiteSpace(url))
             throw new ArgumentException("", nameof(url));
 
         if (url.Length > 255)
-            throw new ArgumentException("Url-адрес не может быть пустым.", nameof(url));
+            throw new ArgumentException("Url-Р°РґСЂРµСЃ РЅРµ РјРѕР¶РµС‚ Р±С‹С‚СЊ РїСѓСЃС‚С‹Рј.", nameof(url));
 
         return new Photo(Guid.NewGuid(), Guid.NewGuid(), recipeId, url, isMain);
     }

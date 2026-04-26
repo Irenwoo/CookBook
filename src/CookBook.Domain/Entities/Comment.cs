@@ -1,4 +1,4 @@
-using CookBook.Domain.Base;
+п»їusing CookBook.Domain.Base;
 
 namespace CookBook.Domain.Entities;
 
@@ -29,13 +29,13 @@ public class Comment : BaseEntity
     public static Comment Create(Guid gourmetId, Guid recipeId, string content)
     {
         if (gourmetId == Guid.Empty)
-            throw new ArgumentException("Гурман не может быть пустым.", nameof(gourmetId));
+            throw new ArgumentException("Р“СѓСЂРјР°РЅ РЅРµ РјРѕР¶РµС‚ Р±С‹С‚СЊ РїСѓСЃС‚С‹Рј.", nameof(gourmetId));
 
         if (recipeId == Guid.Empty)
-            throw new ArgumentException("Идентификатор рецепта не может быть пустым.", nameof(recipeId));
+            throw new ArgumentException("РРґРµРЅС‚РёС„РёРєР°С‚РѕСЂ СЂРµС†РµРїС‚Р° РЅРµ РјРѕР¶РµС‚ Р±С‹С‚СЊ РїСѓСЃС‚С‹Рј.", nameof(recipeId));
 
         if (string.IsNullOrWhiteSpace(content))
-            throw new ArgumentException("Содержимое не может быть пустым", nameof(content));
+            throw new ArgumentException("РЎРѕРґРµСЂР¶РёРјРѕРµ РЅРµ РјРѕР¶РµС‚ Р±С‹С‚СЊ РїСѓСЃС‚С‹Рј", nameof(content));
 
         var now = DateTime.UtcNow;
         return new Comment(Guid.NewGuid(), Guid.NewGuid(), gourmetId, recipeId, content, now, now);
@@ -48,7 +48,7 @@ public class Comment : BaseEntity
     public void Edit(string content)
     {
         if (string.IsNullOrWhiteSpace(content))
-            throw new ArgumentException("Содержимое не может быть пустым", nameof(content));
+            throw new ArgumentException("РЎРѕРґРµСЂР¶РёРјРѕРµ РЅРµ РјРѕР¶РµС‚ Р±С‹С‚СЊ РїСѓСЃС‚С‹Рј", nameof(content));
 
         Content = content;
         UpdatedAt = DateTime.UtcNow;

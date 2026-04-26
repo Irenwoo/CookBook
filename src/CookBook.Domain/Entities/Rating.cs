@@ -1,4 +1,4 @@
-namespace CookBook.Domain.Entities;
+п»їnamespace CookBook.Domain.Entities;
 
 public class Rating
 {
@@ -27,10 +27,10 @@ public class Rating
     public static Rating Create(Guid gourmetId, Guid recipeId, int score)
     {
         if (gourmetId == Guid.Empty)
-            throw new ArgumentException("Гурман не может быть пустым.", nameof(gourmetId));
+            throw new ArgumentException("Р“СѓСЂРјР°РЅ РЅРµ РјРѕР¶РµС‚ Р±С‹С‚СЊ РїСѓСЃС‚С‹Рј.", nameof(gourmetId));
 
         if (recipeId == Guid.Empty)
-            throw new ArgumentException("Идентификатор рецепта не может быть пустым.", nameof(recipeId));
+            throw new ArgumentException("РРґРµРЅС‚РёС„РёРєР°С‚РѕСЂ СЂРµС†РµРїС‚Р° РЅРµ РјРѕР¶РµС‚ Р±С‹С‚СЊ РїСѓСЃС‚С‹Рј.", nameof(recipeId));
 
         ValidateScore(score);
 
@@ -51,6 +51,6 @@ public class Rating
     private static void ValidateScore(int score)
     {
         if (score < 1 || score > 5)
-            throw new ArgumentException("Оценка должна быть от 1 до 5.", nameof(score));
+            throw new ArgumentException("РћС†РµРЅРєР° РґРѕР»Р¶РЅР° Р±С‹С‚СЊ РѕС‚ 1 РґРѕ 5.", nameof(score));
     }
 }

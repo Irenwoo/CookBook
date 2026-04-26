@@ -1,4 +1,4 @@
-using CookBook.Domain.Base;
+п»їusing CookBook.Domain.Base;
 
 namespace CookBook.Domain.Entities;
 
@@ -55,16 +55,16 @@ public class Recipe : BaseEntity
         string? description = null, int? cookingTime = null, int? servings = null)
     {
         if (chefId == Guid.Empty)
-            throw new ArgumentException("Идентификатор шефа не может быть пустым.", nameof(chefId));
+            throw new ArgumentException("РРґРµРЅС‚РёС„РёРєР°С‚РѕСЂ С€РµС„Р° РЅРµ РјРѕР¶РµС‚ Р±С‹С‚СЊ РїСѓСЃС‚С‹Рј.", nameof(chefId));
 
         if (string.IsNullOrWhiteSpace(title))
-            throw new ArgumentException("Заголовок не может быть пустым.", nameof(title));
+            throw new ArgumentException("Р—Р°РіРѕР»РѕРІРѕРє РЅРµ РјРѕР¶РµС‚ Р±С‹С‚СЊ РїСѓСЃС‚С‹Рј.", nameof(title));
 
         if (title.Length > 100)
-            throw new ArgumentException("Длина заголовка не должна превышать 100 символов.", nameof(title));
+            throw new ArgumentException("Р”Р»РёРЅР° Р·Р°РіРѕР»РѕРІРєР° РЅРµ РґРѕР»Р¶РЅР° РїСЂРµРІС‹С€Р°С‚СЊ 100 СЃРёРјРІРѕР»РѕРІ.", nameof(title));
 
         if (string.IsNullOrWhiteSpace(instructions))
-            throw new ArgumentException("Инструкции не могут быть пустыми.", nameof(instructions));
+            throw new ArgumentException("РРЅСЃС‚СЂСѓРєС†РёРё РЅРµ РјРѕРіСѓС‚ Р±С‹С‚СЊ РїСѓСЃС‚С‹РјРё.", nameof(instructions));
 
         var now = DateTime.UtcNow;
         return new Recipe(Guid.NewGuid(), Guid.NewGuid(), chefId, title, description,
@@ -84,13 +84,13 @@ public class Recipe : BaseEntity
             throw new InvalidOperationException("");
 
         if (string.IsNullOrWhiteSpace(title))
-            throw new ArgumentException("Не удается обновить архивированный рецепт.", nameof(title));
+            throw new ArgumentException("РќРµ СѓРґР°РµС‚СЃСЏ РѕР±РЅРѕРІРёС‚СЊ Р°СЂС…РёРІРёСЂРѕРІР°РЅРЅС‹Р№ СЂРµС†РµРїС‚.", nameof(title));
 
         if (title.Length > 100)
-            throw new ArgumentException("Длина заголовка не должна превышать 100 символов.", nameof(title));
+            throw new ArgumentException("Р”Р»РёРЅР° Р·Р°РіРѕР»РѕРІРєР° РЅРµ РґРѕР»Р¶РЅР° РїСЂРµРІС‹С€Р°С‚СЊ 100 СЃРёРјРІРѕР»РѕРІ.", nameof(title));
 
         if (string.IsNullOrWhiteSpace(instructions))
-            throw new ArgumentException("Инструкции не могут быть пустыми.", nameof(instructions));
+            throw new ArgumentException("РРЅСЃС‚СЂСѓРєС†РёРё РЅРµ РјРѕРіСѓС‚ Р±С‹С‚СЊ РїСѓСЃС‚С‹РјРё.", nameof(instructions));
 
         Title = title;
         Instructions = instructions;
@@ -103,7 +103,7 @@ public class Recipe : BaseEntity
     public void Publish()
     {
         if (Status != RecipeStatus.Draft)
-            throw new InvalidOperationException("Публиковать можно только черновые рецепты.");
+            throw new InvalidOperationException("РџСѓР±Р»РёРєРѕРІР°С‚СЊ РјРѕР¶РЅРѕ С‚РѕР»СЊРєРѕ С‡РµСЂРЅРѕРІС‹Рµ СЂРµС†РµРїС‚С‹.");
 
         Status = RecipeStatus.Published;
         PublishedAt = DateTime.UtcNow;
@@ -113,7 +113,7 @@ public class Recipe : BaseEntity
     public void Archive()
     {
         if (Status == RecipeStatus.Archived)
-            throw new InvalidOperationException("Рецепт уже заархивирован.");
+            throw new InvalidOperationException("Р РµС†РµРїС‚ СѓР¶Рµ Р·Р°Р°СЂС…РёРІРёСЂРѕРІР°РЅ.");
 
         Status = RecipeStatus.Archived;
         UpdatedAt = DateTime.UtcNow;

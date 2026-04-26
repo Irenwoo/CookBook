@@ -1,4 +1,4 @@
-namespace CookBook.ValueObjects.Validators;
+п»їnamespace CookBook.ValueObjects.Validators;
 
 public static class TitleValidator
 {
@@ -8,13 +8,13 @@ public static class TitleValidator
     {
         if (string.IsNullOrWhiteSpace(value))
         {
-            errorMessage = "Заголовок не может быть пустым.";
+            errorMessage = "Р—Р°РіРѕР»РѕРІРѕРє РЅРµ РјРѕР¶РµС‚ Р±С‹С‚СЊ РїСѓСЃС‚С‹Рј.";
             return false;
         }
 
         if (value.Length > MaxLength)
         {
-            errorMessage = $"Длина имени пользователя не должна превышать {MaxLength} символов.";
+            errorMessage = $"Р”Р»РёРЅР° РёРјРµРЅРё РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ РЅРµ РґРѕР»Р¶РЅР° РїСЂРµРІС‹С€Р°С‚СЊ {MaxLength} СЃРёРјРІРѕР»РѕРІ.";
             return false;
         }
 

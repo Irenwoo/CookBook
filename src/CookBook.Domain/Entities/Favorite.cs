@@ -1,4 +1,4 @@
-namespace CookBook.Domain.Entities;
+п»їnamespace CookBook.Domain.Entities;
 
 public class Favorite
 {
@@ -23,10 +23,10 @@ public class Favorite
     public static Favorite Create(Guid gourmetId, Guid recipeId)
     {
         if (gourmetId == Guid.Empty)
-            throw new ArgumentException("Гурман не может быть пустым.", nameof(gourmetId));
+            throw new ArgumentException("Р“СѓСЂРјР°РЅ РЅРµ РјРѕР¶РµС‚ Р±С‹С‚СЊ РїСѓСЃС‚С‹Рј.", nameof(gourmetId));
 
         if (recipeId == Guid.Empty)
-            throw new ArgumentException("Идентификатор рецепта не может быть пустым.", nameof(recipeId));
+            throw new ArgumentException("РРґРµРЅС‚РёС„РёРєР°С‚РѕСЂ СЂРµС†РµРїС‚Р° РЅРµ РјРѕР¶РµС‚ Р±С‹С‚СЊ РїСѓСЃС‚С‹Рј.", nameof(recipeId));
 
         return new Favorite(Guid.NewGuid(), gourmetId, recipeId, DateTime.UtcNow);
     }
