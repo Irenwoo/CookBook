@@ -81,7 +81,7 @@ public class Recipe : BaseEntity
         int? cookingTime = null, int? servings = null)
     {
         if (Status == RecipeStatus.Archived)
-            throw new InvalidOperationException("");
+            throw new InvalidOperationException("Невозможно обновить архивированный рецепт.");
 
         if (string.IsNullOrWhiteSpace(title))
             throw new ArgumentException("Не удается обновить архивированный рецепт.", nameof(title));
