@@ -13,6 +13,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CookBook.Domain.Repositorie
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CookBook.DomainApp", "src\CookBook.DomainApp\CookBook.DomainApp.csproj", "{35B96D0F-F65F-40AA-A99E-60ADE28F31DB}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CookBook.Infrastructure", "src\CookBook.Infrastructure\CookBook.Infrastructure.csproj", "{C67D5F0B-BA4D-411E-A74B-8AA36D4B472C}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -71,6 +73,18 @@ Global
 		{35B96D0F-F65F-40AA-A99E-60ADE28F31DB}.Release|x64.Build.0 = Release|Any CPU
 		{35B96D0F-F65F-40AA-A99E-60ADE28F31DB}.Release|x86.ActiveCfg = Release|Any CPU
 		{35B96D0F-F65F-40AA-A99E-60ADE28F31DB}.Release|x86.Build.0 = Release|Any CPU
+		{C67D5F0B-BA4D-411E-A74B-8AA36D4B472C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C67D5F0B-BA4D-411E-A74B-8AA36D4B472C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C67D5F0B-BA4D-411E-A74B-8AA36D4B472C}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{C67D5F0B-BA4D-411E-A74B-8AA36D4B472C}.Debug|x64.Build.0 = Debug|Any CPU
+		{C67D5F0B-BA4D-411E-A74B-8AA36D4B472C}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{C67D5F0B-BA4D-411E-A74B-8AA36D4B472C}.Debug|x86.Build.0 = Debug|Any CPU
+		{C67D5F0B-BA4D-411E-A74B-8AA36D4B472C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C67D5F0B-BA4D-411E-A74B-8AA36D4B472C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C67D5F0B-BA4D-411E-A74B-8AA36D4B472C}.Release|x64.ActiveCfg = Release|Any CPU
+		{C67D5F0B-BA4D-411E-A74B-8AA36D4B472C}.Release|x64.Build.0 = Release|Any CPU
+		{C67D5F0B-BA4D-411E-A74B-8AA36D4B472C}.Release|x86.ActiveCfg = Release|Any CPU
+		{C67D5F0B-BA4D-411E-A74B-8AA36D4B472C}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -80,5 +94,6 @@ Global
 		{5C9CFF31-B402-4FC4-B4E6-66802106B8F7} = {827E0CD3-B72D-47B6-A68D-7590B98EB39B}
 		{FABDD5B4-A1B5-410B-BF38-5F25377BA503} = {827E0CD3-B72D-47B6-A68D-7590B98EB39B}
 		{35B96D0F-F65F-40AA-A99E-60ADE28F31DB} = {827E0CD3-B72D-47B6-A68D-7590B98EB39B}
+		{C67D5F0B-BA4D-411E-A74B-8AA36D4B472C} = {827E0CD3-B72D-47B6-A68D-7590B98EB39B}
 	EndGlobalSection
 EndGlobal
