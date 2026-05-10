@@ -8,7 +8,7 @@ using Microsoft.OpenApi.Models;
 var builder = WebApplication.CreateBuilder(args);
 
 // Connection string
-var connectionString = builder.Configuration.GetConnectionString(nameof(ApplicationDbContext));
+var connectionString = builder.Configuration.GetConnectionString("DefaultConnection");
 if (string.IsNullOrEmpty(connectionString))
 {
     throw new InvalidOperationException("Connection string for ApplicationDbContext is not configured.");
