@@ -1,4 +1,5 @@
 using CookBook.Domain.Entities;
+using CookBook.ValueObjects.Validators;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
@@ -22,11 +23,17 @@ public class GourmetConfiguration : IEntityTypeConfiguration<Gourmet>
 
         builder.Property(g => g.Username)
             .HasColumnName("username")
-            .HasMaxLength(50)
-            .IsRequired();
+            .IsRequired()
+            .HasConversion(username => username, str => str)
+            .HasMaxLength(UsernameValidator.MAX_LENGTH);
 
         builder.Property(g => g.CreatedAt)
-            .HasColumnName("created_at");
+            .HasColumnName("created_at")
+            .IsRequired()
+            .HasConversion(
+                src => src.Kind == DateTimeKind.Utc ? src : DateTime.SpecifyKind(src, DateTimeKind.Utc),
+                dst => dst.Kind == DateTimeKind.Utc ? dst : DateTime.SpecifyKind(dst, DateTimeKind.Utc)
+            );
 
         builder.HasMany(g => g.Favorites)
             .WithOne(f => f.Gourmet)

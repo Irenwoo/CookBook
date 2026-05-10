@@ -1,4 +1,5 @@
 using CookBook.Domain.Entities;
+using CookBook.ValueObjects.Validators;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
@@ -26,8 +27,9 @@ public class RecipeConfiguration : IEntityTypeConfiguration<Recipe>
 
         builder.Property(r => r.Title)
             .HasColumnName("title")
-            .HasMaxLength(100)
-            .IsRequired();
+            .IsRequired()
+            .HasConversion(title => title, str => str)
+            .HasMaxLength(TitleValidator.MAX_LENGTH);
 
         builder.Property(r => r.Description)
             .HasColumnName("description");
@@ -49,13 +51,27 @@ public class RecipeConfiguration : IEntityTypeConfiguration<Recipe>
             .IsRequired();
 
         builder.Property(r => r.CreatedAt)
-            .HasColumnName("created_at");
+            .HasColumnName("created_at")
+            .IsRequired()
+            .HasConversion(
+                src => src.Kind == DateTimeKind.Utc ? src : DateTime.SpecifyKind(src, DateTimeKind.Utc),
+                dst => dst.Kind == DateTimeKind.Utc ? dst : DateTime.SpecifyKind(dst, DateTimeKind.Utc)
+            );
 
         builder.Property(r => r.UpdatedAt)
-            .HasColumnName("updated_at");
+            .HasColumnName("updated_at")
+            .IsRequired()
+            .HasConversion(
+                src => src.Kind == DateTimeKind.Utc ? src : DateTime.SpecifyKind(src, DateTimeKind.Utc),
+                dst => dst.Kind == DateTimeKind.Utc ? dst : DateTime.SpecifyKind(dst, DateTimeKind.Utc)
+            );
 
         builder.Property(r => r.PublishedAt)
-            .HasColumnName("published_at");
+            .HasColumnName("published_at")
+            .HasConversion(
+                src => !src.HasValue ? src : src.Value.Kind == DateTimeKind.Utc ? src : DateTime.SpecifyKind(src.Value, DateTimeKind.Utc),
+                dst => !dst.HasValue ? dst : dst.Value.Kind == DateTimeKind.Utc ? dst : DateTime.SpecifyKind(dst.Value, DateTimeKind.Utc)
+            );
 
         builder.HasMany(r => r.Ingredients)
             .WithOne(i => i.Recipe)

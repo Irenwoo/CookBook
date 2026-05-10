@@ -1,10 +1,13 @@
 namespace CookBook.Domain.Repositories.Abstractions.Base;
 
-public interface IRepository<TEntity> where TEntity : class
+public interface IRepository<TEntity, in TId>
+    where TEntity : class
+    where TId : struct, IEquatable<TId>
 {
-    Task<TEntity?> GetByIdAsync(Guid id, CancellationToken cancellationToken = default);
-    Task<IReadOnlyList<TEntity>> GetAllAsync(CancellationToken cancellationToken = default);
-    Task AddAsync(TEntity entity, CancellationToken cancellationToken = default);
-    Task UpdateAsync(TEntity entity, CancellationToken cancellationToken = default);
-    Task DeleteAsync(TEntity entity, CancellationToken cancellationToken = default);
+    Task<IEnumerable<TEntity>> GetAllAsync(CancellationToken cancellationToken, bool asNoTracking = false);
+    Task<TEntity?> GetByIdAsync(TId id, CancellationToken cancellationToken);
+    Task<TEntity?> AddAsync(TEntity entity, CancellationToken cancellationToken);
+    Task<bool> UpdateAsync(TEntity entity, CancellationToken cancellationToken);
+    Task<bool> DeleteAsync(TEntity entity, CancellationToken cancellationToken);
+    Task<bool> DeleteAsync(TId id, CancellationToken cancellationToken);
 }

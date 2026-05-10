@@ -3,8 +3,8 @@ using CookBook.Domain.Repositories.Abstractions.Base;
 
 namespace CookBook.Domain.Repositories.Abstractions;
 
-public interface IPhotoRepository : IRepository<Photo>
+public interface IPhotoRepository : IRepository<Photo, Guid>
 {
-    Task<IReadOnlyList<Photo>> GetByRecipeIdAsync(Guid recipeId, CancellationToken cancellationToken = default);
-    Task<Photo?> GetMainPhotoByRecipeIdAsync(Guid recipeId, CancellationToken cancellationToken = default);
+    Task<IEnumerable<Photo>> GetByRecipeIdAsync(Guid recipeId, CancellationToken cancellationToken);
+    Task<Photo?> GetMainPhotoByRecipeIdAsync(Guid recipeId, CancellationToken cancellationToken);
 }

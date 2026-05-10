@@ -1,19 +1,25 @@
 using CookBook.Domain.Entities;
 using CookBook.Domain.Repositories.Abstractions;
+using CookBook.ValueObjects;
 using Microsoft.EntityFrameworkCore;
 
 namespace CookBook.Infrastructure.RepositoriesEF;
 
-public class ChefRepository : EFRepository<Chef>, IChefRepository
+public class ChefRepository(ApplicationDbContext context)
+    : EFRepository<Chef, Guid>(context), IChefRepository
 {
-    public ChefRepository(ApplicationDbContext context) : base(context) { }
+    private readonly DbSet<Chef> _chefs = context.Set<Chef>();
 
-    public async Task<Chef?> GetByUsernameAsync(string username, CancellationToken cancellationToken = default)
-        => await DbSet.FirstOrDefaultAsync(c => c.Username == username, cancellationToken);
+    public override Task<Chef?> GetByIdAsync(Guid id, CancellationToken cancellationToken)
+        => _chefs.Include(c => c.Recipes)
+        .FirstOrDefaultAsync(c => c.Id == id, cancellationToken);
 
-    public async Task<bool> ExistsByUsernameAsync(string username, CancellationToken cancellationToken = default)
-        => await DbSet.AnyAsync(c => c.Username == username, cancellationToken);
+    public Task<Chef?> GetByUsernameAsync(string username, CancellationToken cancellationToken)
+        => _chefs.FirstOrDefaultAsync(c => c.Username == username, cancellationToken);
 
-    public async Task<IReadOnlyList<Chef>> GetWithRecipesAsync(CancellationToken cancellationToken = default)
-        => await DbSet.Include(c => c.Recipes).ToListAsync(cancellationToken);
+    public Task<bool> ExistsByUsernameAsync(string username, CancellationToken cancellationToken)
+        => _chefs.AnyAsync(c => c.Username == username, cancellationToken);
+
+    public async Task<IEnumerable<Chef>> GetWithRecipesAsync(CancellationToken cancellationToken)
+        => await _chefs.Include(c => c.Recipes).ToListAsync(cancellationToken);
 }

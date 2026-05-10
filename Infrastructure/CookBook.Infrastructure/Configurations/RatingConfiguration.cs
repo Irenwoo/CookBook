@@ -29,10 +29,20 @@ public class RatingConfiguration : IEntityTypeConfiguration<Rating>
             .IsRequired();
 
         builder.Property(r => r.CreatedAt)
-            .HasColumnName("created_at");
+            .HasColumnName("created_at")
+            .IsRequired()
+            .HasConversion(
+                src => src.Kind == DateTimeKind.Utc ? src : DateTime.SpecifyKind(src, DateTimeKind.Utc),
+                dst => dst.Kind == DateTimeKind.Utc ? dst : DateTime.SpecifyKind(dst, DateTimeKind.Utc)
+            );
 
         builder.Property(r => r.UpdatedAt)
-            .HasColumnName("updated_at");
+            .HasColumnName("updated_at")
+            .IsRequired()
+            .HasConversion(
+                src => src.Kind == DateTimeKind.Utc ? src : DateTime.SpecifyKind(src, DateTimeKind.Utc),
+                dst => dst.Kind == DateTimeKind.Utc ? dst : DateTime.SpecifyKind(dst, DateTimeKind.Utc)
+            );
 
         builder.HasIndex(r => new { r.GourmetId, r.RecipeId })
             .IsUnique();

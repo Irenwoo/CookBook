@@ -3,38 +3,42 @@ using Microsoft.EntityFrameworkCore;
 
 namespace CookBook.Infrastructure.RepositoriesEF;
 
-public class EFRepository<TEntity> : IRepository<TEntity> where TEntity : class
+public class EFRepository<TEntity, TId>(ApplicationDbContext context)
+    : IRepository<TEntity, TId>
+    where TEntity : class
+    where TId : struct, IEquatable<TId>
 {
-    protected readonly ApplicationDbContext Context;
-    protected readonly DbSet<TEntity> DbSet;
+    public async Task<IEnumerable<TEntity>> GetAllAsync(CancellationToken cancellationToken, bool asNoTracking = false)
+        => await (asNoTracking ? context.Set<TEntity>().AsNoTracking() : context.Set<TEntity>())
+        .ToListAsync(cancellationToken);
 
-    public EFRepository(ApplicationDbContext context)
+    public virtual async Task<TEntity?> GetByIdAsync(TId id, CancellationToken cancellationToken)
+        => await context.Set<TEntity>().FindAsync(id, cancellationToken);
+
+    public async Task<TEntity?> AddAsync(TEntity entity, CancellationToken cancellationToken)
     {
-        Context = context;
-        DbSet = context.Set<TEntity>();
+        ArgumentNullException.ThrowIfNull(entity, nameof(entity));
+        await context.Set<TEntity>().AddAsync(entity, cancellationToken);
+        return await context.SaveChangesAsync(cancellationToken) > 0 ? entity : null;
     }
 
-    public virtual async Task<TEntity?> GetByIdAsync(Guid id, CancellationToken cancellationToken = default)
-        => await DbSet.FindAsync(new object[] { id }, cancellationToken);
-
-    public virtual async Task<IReadOnlyList<TEntity>> GetAllAsync(CancellationToken cancellationToken = default)
-        => await DbSet.ToListAsync(cancellationToken);
-
-    public virtual async Task AddAsync(TEntity entity, CancellationToken cancellationToken = default)
+    public async Task<bool> UpdateAsync(TEntity entity, CancellationToken cancellationToken)
     {
-        await DbSet.AddAsync(entity, cancellationToken);
-        await Context.SaveChangesAsync(cancellationToken);
+        ArgumentNullException.ThrowIfNull(entity, nameof(entity));
+        context.Set<TEntity>().Update(entity);
+        return await context.SaveChangesAsync(cancellationToken) > 0;
     }
 
-    public virtual async Task UpdateAsync(TEntity entity, CancellationToken cancellationToken = default)
+    public async Task<bool> DeleteAsync(TEntity entity, CancellationToken cancellationToken)
     {
-        DbSet.Update(entity);
-        await Context.SaveChangesAsync(cancellationToken);
+        ArgumentNullException.ThrowIfNull(entity, nameof(entity));
+        context.Set<TEntity>().Remove(entity);
+        return await context.SaveChangesAsync(cancellationToken) > 0;
     }
 
-    public virtual async Task DeleteAsync(TEntity entity, CancellationToken cancellationToken = default)
+    public async Task<bool> DeleteAsync(TId id, CancellationToken cancellationToken)
     {
-        DbSet.Remove(entity);
-        await Context.SaveChangesAsync(cancellationToken);
+        var entity = await GetByIdAsync(id, cancellationToken);
+        return entity is null ? false : await DeleteAsync(entity, cancellationToken);
     }
 }

@@ -3,9 +3,9 @@ using CookBook.Domain.Repositories.Abstractions.Base;
 
 namespace CookBook.Domain.Repositories.Abstractions;
 
-public interface IRatingRepository : IRepository<Rating>
+public interface IRatingRepository : IRepository<Rating, Guid>
 {
-    Task<IReadOnlyList<Rating>> GetByRecipeIdAsync(Guid recipeId, CancellationToken cancellationToken = default);
-    Task<Rating?> GetByGourmetAndRecipeAsync(Guid gourmetId, Guid recipeId, CancellationToken cancellationToken = default);
-    Task<double> GetAverageScoreByRecipeIdAsync(Guid recipeId, CancellationToken cancellationToken = default);
+    Task<IEnumerable<Rating>> GetByRecipeIdAsync(Guid recipeId, CancellationToken cancellationToken);
+    Task<Rating?> GetByGourmetAndRecipeAsync(Guid gourmetId, Guid recipeId, CancellationToken cancellationToken);
+    Task<double> GetAverageScoreByRecipeIdAsync(Guid recipeId, CancellationToken cancellationToken);
 }

@@ -1,4 +1,6 @@
 using CookBook.Domain.Entities;
+using CookBook.ValueObjects;
+using CookBook.ValueObjects.Validators;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
@@ -22,11 +24,17 @@ public class ChefConfiguration : IEntityTypeConfiguration<Chef>
 
         builder.Property(c => c.Username)
             .HasColumnName("username")
-            .HasMaxLength(50)
-            .IsRequired();
+            .IsRequired()
+            .HasConversion(username => username, str => str)
+            .HasMaxLength(UsernameValidator.MAX_LENGTH);
 
         builder.Property(c => c.CreatedAt)
-            .HasColumnName("created_at");
+            .HasColumnName("created_at")
+            .IsRequired()
+            .HasConversion(
+                src => src.Kind == DateTimeKind.Utc ? src : DateTime.SpecifyKind(src, DateTimeKind.Utc),
+                dst => dst.Kind == DateTimeKind.Utc ? dst : DateTime.SpecifyKind(dst, DateTimeKind.Utc)
+            );
 
         builder.HasMany(c => c.Recipes)
             .WithOne(r => r.Chef)

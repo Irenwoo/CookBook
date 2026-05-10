@@ -4,17 +4,16 @@ using Microsoft.EntityFrameworkCore;
 
 namespace CookBook.Infrastructure.RepositoriesEF;
 
-public class IngredientRepository : EFRepository<Ingredient>, IIngredientRepository
+public class IngredientRepository(ApplicationDbContext context)
+    : EFRepository<Ingredient, Guid>(context), IIngredientRepository
 {
-    public IngredientRepository(ApplicationDbContext context) : base(context) { }
+    public async Task<IEnumerable<Ingredient>> GetByRecipeIdAsync(Guid recipeId, CancellationToken cancellationToken)
+        => await context.Set<Ingredient>().Where(i => i.RecipeId == recipeId).ToListAsync(cancellationToken);
 
-    public async Task<IReadOnlyList<Ingredient>> GetByRecipeIdAsync(Guid recipeId, CancellationToken cancellationToken = default)
-        => await DbSet.Where(i => i.RecipeId == recipeId).ToListAsync(cancellationToken);
-
-    public async Task DeleteByRecipeIdAsync(Guid recipeId, CancellationToken cancellationToken = default)
+    public async Task DeleteByRecipeIdAsync(Guid recipeId, CancellationToken cancellationToken)
     {
-        var ingredients = await DbSet.Where(i => i.RecipeId == recipeId).ToListAsync(cancellationToken);
-        DbSet.RemoveRange(ingredients);
-        await Context.SaveChangesAsync(cancellationToken);
+        var ingredients = await context.Set<Ingredient>().Where(i => i.RecipeId == recipeId).ToListAsync(cancellationToken);
+        context.Set<Ingredient>().RemoveRange(ingredients);
+        await context.SaveChangesAsync(cancellationToken);
     }
 }

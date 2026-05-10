@@ -4,19 +4,20 @@ using Microsoft.EntityFrameworkCore;
 
 namespace CookBook.Infrastructure.RepositoriesEF;
 
-public class RatingRepository : EFRepository<Rating>, IRatingRepository
+public class RatingRepository(ApplicationDbContext context)
+    : EFRepository<Rating, Guid>(context), IRatingRepository
 {
-    public RatingRepository(ApplicationDbContext context) : base(context) { }
+    private readonly DbSet<Rating> _ratings = context.Set<Rating>();
 
-    public async Task<IReadOnlyList<Rating>> GetByRecipeIdAsync(Guid recipeId, CancellationToken cancellationToken = default)
-        => await DbSet.Where(r => r.RecipeId == recipeId).ToListAsync(cancellationToken);
+    public async Task<IEnumerable<Rating>> GetByRecipeIdAsync(Guid recipeId, CancellationToken cancellationToken)
+        => await _ratings.Where(r => r.RecipeId == recipeId).ToListAsync(cancellationToken);
 
-    public async Task<Rating?> GetByGourmetAndRecipeAsync(Guid gourmetId, Guid recipeId, CancellationToken cancellationToken = default)
-        => await DbSet.FirstOrDefaultAsync(r => r.GourmetId == gourmetId && r.RecipeId == recipeId, cancellationToken);
+    public Task<Rating?> GetByGourmetAndRecipeAsync(Guid gourmetId, Guid recipeId, CancellationToken cancellationToken)
+        => _ratings.FirstOrDefaultAsync(r => r.GourmetId == gourmetId && r.RecipeId == recipeId, cancellationToken);
 
-    public async Task<double> GetAverageScoreByRecipeIdAsync(Guid recipeId, CancellationToken cancellationToken = default)
+    public async Task<double> GetAverageScoreByRecipeIdAsync(Guid recipeId, CancellationToken cancellationToken)
     {
-        var ratings = await DbSet.Where(r => r.RecipeId == recipeId).ToListAsync(cancellationToken);
+        var ratings = await _ratings.Where(r => r.RecipeId == recipeId).ToListAsync(cancellationToken);
         return ratings.Count == 0 ? 0 : ratings.Average(r => r.Score);
     }
 }

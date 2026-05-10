@@ -3,8 +3,8 @@ using CookBook.Domain.Repositories.Abstractions.Base;
 
 namespace CookBook.Domain.Repositories.Abstractions;
 
-public interface IIngredientRepository : IRepository<Ingredient>
+public interface IIngredientRepository : IRepository<Ingredient, Guid>
 {
-    Task<IReadOnlyList<Ingredient>> GetByRecipeIdAsync(Guid recipeId, CancellationToken cancellationToken = default);
-    Task DeleteByRecipeIdAsync(Guid recipeId, CancellationToken cancellationToken = default);
+    Task<IEnumerable<Ingredient>> GetByRecipeIdAsync(Guid recipeId, CancellationToken cancellationToken);
+    Task DeleteByRecipeIdAsync(Guid recipeId, CancellationToken cancellationToken);
 }

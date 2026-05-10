@@ -3,9 +3,9 @@ using CookBook.Domain.Repositories.Abstractions.Base;
 
 namespace CookBook.Domain.Repositories.Abstractions;
 
-public interface IFavoriteRepository : IRepository<Favorite>
+public interface IFavoriteRepository : IRepository<Favorite, Guid>
 {
-    Task<IReadOnlyList<Favorite>> GetByGourmetIdAsync(Guid gourmetId, CancellationToken cancellationToken = default);
-    Task<Favorite?> GetByGourmetAndRecipeAsync(Guid gourmetId, Guid recipeId, CancellationToken cancellationToken = default);
-    Task<bool> ExistsAsync(Guid gourmetId, Guid recipeId, CancellationToken cancellationToken = default);
+    Task<IEnumerable<Favorite>> GetByGourmetIdAsync(Guid gourmetId, CancellationToken cancellationToken);
+    Task<Favorite?> GetByGourmetAndRecipeAsync(Guid gourmetId, Guid recipeId, CancellationToken cancellationToken);
+    Task<bool> ExistsAsync(Guid gourmetId, Guid recipeId, CancellationToken cancellationToken);
 }

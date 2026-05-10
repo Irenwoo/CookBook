@@ -25,7 +25,12 @@ public class FavoriteConfiguration : IEntityTypeConfiguration<Favorite>
             .IsRequired();
 
         builder.Property(f => f.CreatedAt)
-            .HasColumnName("created_at");
+            .HasColumnName("created_at")
+            .IsRequired()
+            .HasConversion(
+                src => src.Kind == DateTimeKind.Utc ? src : DateTime.SpecifyKind(src, DateTimeKind.Utc),
+                dst => dst.Kind == DateTimeKind.Utc ? dst : DateTime.SpecifyKind(dst, DateTimeKind.Utc)
+            );
 
         builder.HasIndex(f => new { f.GourmetId, f.RecipeId })
             .IsUnique();
