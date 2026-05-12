@@ -1,6 +1,5 @@
 using CookBook.Domain.Entities;
 using CookBook.Domain.Repositories.Abstractions;
-using CookBook.ValueObjects;
 using Microsoft.EntityFrameworkCore;
 
 namespace CookBook.Infrastructure.RepositoriesEF;
@@ -20,6 +19,7 @@ public class ChefRepository(ApplicationDbContext context)
     public Task<bool> ExistsByUsernameAsync(string username, CancellationToken cancellationToken)
         => _chefs.AnyAsync(c => c.Username == username, cancellationToken);
 
-    public async Task<IEnumerable<Chef>> GetWithRecipesAsync(CancellationToken cancellationToken)
-        => await _chefs.Include(c => c.Recipes).ToListAsync(cancellationToken);
+    public Task<Chef> GetWithRecipesAsync(Guid chefId, CancellationToken cancellationToken)
+        => _chefs.Include(c => c.Recipes)
+            .FirstAsync(c => c.Id == chefId, cancellationToken);
 }

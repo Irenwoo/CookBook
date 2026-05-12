@@ -1,8 +1,9 @@
-﻿namespace CookBook.Domain.Entities;
+﻿using CookBook.Domain.Base;
 
-public class Favorite
+namespace CookBook.Domain.Entities;
+
+public class Favorite : Entity<Guid>
 {
-    public Guid Id { get; private set; }
     public Guid GourmetId { get; private set; }
     public Guid RecipeId { get; private set; }
     public DateTime CreatedAt { get; private set; }
@@ -10,11 +11,11 @@ public class Favorite
     public Gourmet? Gourmet { get; private set; }
     public Recipe? Recipe { get; private set; }
 
-    private Favorite() { }
+    private Favorite() : base() { }
 
     private Favorite(Guid id, Guid gourmetId, Guid recipeId, DateTime createdAt)
+        : base(id)
     {
-        Id = id;
         GourmetId = gourmetId;
         RecipeId = recipeId;
         CreatedAt = createdAt;

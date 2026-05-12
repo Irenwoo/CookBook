@@ -138,7 +138,7 @@ Console.WriteLine($"✅ Рецепт архивирован. Статус: {reci
 // Попытка обновить архивированный рецепт
 try
 {
-    recipe.Update("New Title", "New instructions");
+    recipe.Update("New Title", "New description", "New instructions");
 }
 catch (InvalidOperationException ex)
 {

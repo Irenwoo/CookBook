@@ -1,19 +1,10 @@
 namespace CookBook.Domain.Base;
 
-public abstract class BaseEntity
+public abstract class Entity<TId>(TId id) where TId : struct, IEquatable<TId>
 {
-    public Guid Id { get; protected set; }
-    public Guid Uuid { get; protected set; }
+    public TId Id { get; } = id;
 
-    protected BaseEntity()
+    protected Entity() : this(default!)
     {
-        Id = Guid.NewGuid();
-        Uuid = Guid.NewGuid();
-    }
-
-    protected BaseEntity(Guid id, Guid uuid)
-    {
-        Id = id;
-        Uuid = uuid;
     }
 }

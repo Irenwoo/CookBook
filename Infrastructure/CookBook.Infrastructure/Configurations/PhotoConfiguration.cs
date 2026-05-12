@@ -16,9 +16,7 @@ public class PhotoConfiguration : IEntityTypeConfiguration<Photo>
             .HasColumnName("id")
             .IsRequired();
 
-        builder.Property(p => p.Uuid)
-            .HasColumnName("uuid")
-            .IsRequired();
+      
 
         builder.Property(p => p.RecipeId)
             .HasColumnName("recipe_id")

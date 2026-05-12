@@ -1,3 +1,4 @@
+using CookBook.Domain.Base;
 using CookBook.Domain.Repositories.Abstractions.Base;
 using Microsoft.EntityFrameworkCore;
 
@@ -5,7 +6,7 @@ namespace CookBook.Infrastructure.RepositoriesEF;
 
 public class EFRepository<TEntity, TId>(ApplicationDbContext context)
     : IRepository<TEntity, TId>
-    where TEntity : class
+    where TEntity : Entity<TId>  // должно совпадать с интерфейсом!
     where TId : struct, IEquatable<TId>
 {
     public async Task<IEnumerable<TEntity>> GetAllAsync(CancellationToken cancellationToken, bool asNoTracking = false)

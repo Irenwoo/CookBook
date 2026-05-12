@@ -16,9 +16,7 @@ public class CommentConfiguration : IEntityTypeConfiguration<Comment>
             .HasColumnName("id")
             .IsRequired();
 
-        builder.Property(c => c.Uuid)
-            .HasColumnName("uuid")
-            .IsRequired();
+     
 
         builder.Property(c => c.GourmetId)
             .HasColumnName("gourmet_id")

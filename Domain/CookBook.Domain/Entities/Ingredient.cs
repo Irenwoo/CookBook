@@ -2,7 +2,7 @@
 
 namespace CookBook.Domain.Entities;
 
-public class Ingredient : BaseEntity
+public class Ingredient : Entity<Guid>
 {
     public Guid RecipeId { get; private set; }
     public string Name { get; private set; }
@@ -13,8 +13,8 @@ public class Ingredient : BaseEntity
 
     private Ingredient() : base() { }
 
-    private Ingredient(Guid id, Guid uuid, Guid recipeId, string name, decimal? quantity, string? unit)
-        : base(id, uuid)
+    private Ingredient(Guid id, Guid recipeId, string name, decimal? quantity, string? unit)
+        : base(id)
     {
         RecipeId = recipeId;
         Name = name;
@@ -34,11 +34,11 @@ public class Ingredient : BaseEntity
             throw new ArgumentException("Quantity cannot be negative.", nameof(quantity));
         if (unit != null && unit.Length > 20)
             throw new ArgumentException("Unit cannot exceed 20 characters.", nameof(unit));
-        return new Ingredient(Guid.NewGuid(), Guid.NewGuid(), recipeId, name, quantity, unit);
+        return new Ingredient(Guid.NewGuid(), recipeId, name, quantity, unit);
     }
 
-    public static Ingredient Restore(Guid id, Guid uuid, Guid recipeId, string name, decimal? quantity, string? unit)
-        => new Ingredient(id, uuid, recipeId, name, quantity, unit);
+    public static Ingredient Restore(Guid id, Guid recipeId, string name, decimal? quantity, string? unit)
+        => new Ingredient(id, recipeId, name, quantity, unit);
 
     public void Update(string name, decimal? quantity = null, string? unit = null)
     {

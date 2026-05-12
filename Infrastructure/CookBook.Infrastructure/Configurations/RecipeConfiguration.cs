@@ -17,9 +17,7 @@ public class RecipeConfiguration : IEntityTypeConfiguration<Recipe>
             .HasColumnName("id")
             .IsRequired();
 
-        builder.Property(r => r.Uuid)
-            .HasColumnName("uuid")
-            .IsRequired();
+    
 
         builder.Property(r => r.ChefId)
             .HasColumnName("chef_id")

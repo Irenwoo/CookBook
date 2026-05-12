@@ -3,7 +3,7 @@ using CookBook.ValueObjects;
 
 namespace CookBook.Domain.Entities;
 
-public class Chef : BaseEntity
+public class Chef : Entity<Guid>
 {
     public string Username { get; private set; }
     public DateTime CreatedAt { get; private set; }
@@ -13,8 +13,8 @@ public class Chef : BaseEntity
 
     private Chef() : base() { }
 
-    private Chef(Guid id, Guid uuid, string username, DateTime createdAt)
-        : base(id, uuid)
+    private Chef(Guid id, string username, DateTime createdAt)
+        : base(id)
     {
         Username = username;
         CreatedAt = createdAt;
@@ -23,11 +23,11 @@ public class Chef : BaseEntity
     public static Chef Create(string username)
     {
         var validatedUsername = new Username(username);
-        return new Chef(Guid.NewGuid(), Guid.NewGuid(), validatedUsername.Value, DateTime.UtcNow);
+        return new Chef(Guid.NewGuid(), validatedUsername.Value, DateTime.UtcNow);
     }
 
-    public static Chef Restore(Guid id, Guid uuid, string username, DateTime createdAt)
-        => new Chef(id, uuid, username, createdAt);
+    public static Chef Restore(Guid id, string username, DateTime createdAt)
+        => new Chef(id, username, createdAt);
 
     public void UpdateUsername(string username)
     {

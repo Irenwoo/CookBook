@@ -3,7 +3,7 @@ using CookBook.ValueObjects;
 
 namespace CookBook.Domain.Entities;
 
-public class Gourmet : BaseEntity
+public class Gourmet : Entity<Guid>
 {
     public string Username { get; private set; }
     public DateTime CreatedAt { get; private set; }
@@ -17,10 +17,12 @@ public class Gourmet : BaseEntity
     private readonly List<Comment> _comments = new();
     public IReadOnlyCollection<Comment> Comments => _comments.AsReadOnly();
 
+ 
     private Gourmet() : base() { }
 
-    private Gourmet(Guid id, Guid uuid, string username, DateTime createdAt)
-        : base(id, uuid)
+
+    private Gourmet(Guid id, string username, DateTime createdAt)
+        : base(id)  
     {
         Username = username;
         CreatedAt = createdAt;
@@ -29,11 +31,11 @@ public class Gourmet : BaseEntity
     public static Gourmet Create(string username)
     {
         var validatedUsername = new Username(username);
-        return new Gourmet(Guid.NewGuid(), Guid.NewGuid(), validatedUsername.Value, DateTime.UtcNow);
+        return new Gourmet(Guid.NewGuid(), validatedUsername.Value, DateTime.UtcNow);
     }
 
-    public static Gourmet Restore(Guid id, Guid uuid, string username, DateTime createdAt)
-        => new Gourmet(id, uuid, username, createdAt);
+    public static Gourmet Restore(Guid id, string username, DateTime createdAt)
+        => new Gourmet(id, username, createdAt);
 
     public void UpdateUsername(string username)
     {

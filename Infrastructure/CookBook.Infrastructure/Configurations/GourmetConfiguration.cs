@@ -17,9 +17,7 @@ public class GourmetConfiguration : IEntityTypeConfiguration<Gourmet>
             .HasColumnName("id")
             .IsRequired();
 
-        builder.Property(g => g.Uuid)
-            .HasColumnName("uuid")
-            .IsRequired();
+      
 
         builder.Property(g => g.Username)
             .HasColumnName("username")

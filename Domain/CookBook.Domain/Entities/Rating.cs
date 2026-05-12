@@ -1,8 +1,9 @@
-﻿namespace CookBook.Domain.Entities;
+﻿using CookBook.Domain.Base;
 
-public class Rating
+namespace CookBook.Domain.Entities;
+
+public class Rating : Entity<Guid>
 {
-    public Guid Id { get; private set; }
     public Guid GourmetId { get; private set; }
     public Guid RecipeId { get; private set; }
     public int Score { get; private set; }
@@ -12,11 +13,11 @@ public class Rating
     public Gourmet? Gourmet { get; private set; }
     public Recipe? Recipe { get; private set; }
 
-    private Rating() { }
+    private Rating() : base() { }
 
     private Rating(Guid id, Guid gourmetId, Guid recipeId, int score, DateTime createdAt, DateTime updatedAt)
+        : base(id)
     {
-        Id = id;
         GourmetId = gourmetId;
         RecipeId = recipeId;
         Score = score;

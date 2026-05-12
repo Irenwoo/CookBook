@@ -1,7 +1,9 @@
+using CookBook.Domain.Base;
+
 namespace CookBook.Domain.Repositories.Abstractions.Base;
 
 public interface IRepository<TEntity, in TId>
-    where TEntity : class
+    where TEntity : Entity<TId>
     where TId : struct, IEquatable<TId>
 {
     Task<IEnumerable<TEntity>> GetAllAsync(CancellationToken cancellationToken, bool asNoTracking = false);

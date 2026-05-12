@@ -1,4 +1,4 @@
-using CookBook.ValueObjects.Exceptions;
+ using CookBook.ValueObjects.Exceptions;
 
 namespace CookBook.ValueObjects.Base;
 

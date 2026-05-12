@@ -18,9 +18,7 @@ public class ChefConfiguration : IEntityTypeConfiguration<Chef>
             .HasColumnName("id")
             .IsRequired();
 
-        builder.Property(c => c.Uuid)
-            .HasColumnName("uuid")
-            .IsRequired();
+      
 
         builder.Property(c => c.Username)
             .HasColumnName("username")

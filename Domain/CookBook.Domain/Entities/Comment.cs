@@ -2,7 +2,7 @@
 
 namespace CookBook.Domain.Entities;
 
-public class Comment : BaseEntity
+public class Comment : Entity<Guid>
 {
     public Guid GourmetId { get; private set; }
     public Guid RecipeId { get; private set; }
@@ -15,9 +15,9 @@ public class Comment : BaseEntity
 
     private Comment() : base() { }
 
-    private Comment(Guid id, Guid uuid, Guid gourmetId, Guid recipeId, string content,
+    private Comment(Guid id, Guid gourmetId, Guid recipeId, string content,
         DateTime createdAt, DateTime updatedAt)
-        : base(id, uuid)
+        : base(id)
     {
         GourmetId = gourmetId;
         RecipeId = recipeId;
@@ -35,12 +35,12 @@ public class Comment : BaseEntity
         if (string.IsNullOrWhiteSpace(content))
             throw new ArgumentException("Content cannot be empty.", nameof(content));
         var now = DateTime.UtcNow;
-        return new Comment(Guid.NewGuid(), Guid.NewGuid(), gourmetId, recipeId, content, now, now);
+        return new Comment(Guid.NewGuid(), gourmetId, recipeId, content, now, now);
     }
 
-    public static Comment Restore(Guid id, Guid uuid, Guid gourmetId, Guid recipeId,
+    public static Comment Restore(Guid id, Guid gourmetId, Guid recipeId,
         string content, DateTime createdAt, DateTime updatedAt)
-        => new Comment(id, uuid, gourmetId, recipeId, content, createdAt, updatedAt);
+        => new Comment(id, gourmetId, recipeId, content, createdAt, updatedAt);
 
     public void Edit(string content)
     {
@@ -50,4 +50,3 @@ public class Comment : BaseEntity
         UpdatedAt = DateTime.UtcNow;
     }
 }
-    
